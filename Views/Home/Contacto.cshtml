@@ -1,0 +1,104 @@
+@{
+    ViewData["Title"] = "Asesoría & Contacto";
+}
+
+<style>
+    .contact-container {
+        max-width: 600px;
+        margin: 50px auto;
+        background: #1c1421;
+        padding: 40px;
+        border-radius: 20px;
+        border: 1px solid #f2a1b1;
+        box-shadow: 0 0 25px rgba(242, 161, 177, 0.15);
+    }
+    .contact-title { text-align: center; font-family: 'Playfair Display', serif; color: #f2a1b1; font-size: 2.2rem; margin-bottom: 8px; }
+    .contact-sub { text-align: center; color: #c5b8cc; margin-bottom: 30px; font-size: 0.9rem; font-weight: 300; }
+    
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #e0a96d; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+    .form-control {
+        width: 100%;
+        padding: 13px;
+        border-radius: 8px;
+        border: 1px solid #382542;
+        background: #120e14;
+        color: white;
+        font-size: 0.95rem;
+    }
+    .form-control:focus { outline: none; border-color: #f2a1b1; }
+    
+    .btn-submit {
+        background: linear-gradient(90deg, #f2a1b1, #e0a96d);
+        color: #120e14;
+        border: none;
+        padding: 15px;
+        border-radius: 30px;
+        font-weight: 800;
+        text-transform: uppercase;
+        cursor: pointer;
+        width: 100%;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+        margin-top: 10px;
+        transition: 0.3s;
+    }
+    .btn-submit:hover { transform: scale(1.02); }
+    
+    .alert-success {
+        background: rgba(242, 161, 177, 0.15);
+        border: 1px solid #f2a1b1;
+        color: #f2a1b1;
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+</style>
+
+<div class="contact-container">
+    <h2 class="contact-title">💄 Asesórame / Contacto</h2>
+    <p class="contact-sub">¿Dudas con tu tono de base o buscas recomendaciones para tu tipo de piel? Escríbenos.</p>
+
+    @if (ViewBag.Mensaje != null)
+    {
+        <div class="alert-success">
+            @ViewBag.Mensaje
+        </div>
+    }
+
+    <form asp-controller="Home" asp-action="Contacto" method="post">
+        <div class="form-group">
+            <label>Nombre Completo</label>
+            <input type="text" name="nombre" class="form-control" placeholder="Ej. Camila Torres" required />
+        </div>
+
+        <div class="form-group">
+            <label>Correo Electrónico</label>
+            <input type="email" name="email" class="form-control" placeholder="tu@correo.com" required />
+        </div>
+
+        <div class="form-group">
+            <label>Tipo de Consulta</label>
+            <select name="tipoConsulta" class="form-control">
+                <option value="Asesoría de Tono de Base">Recomendación de Tono de Base / Corrector</option>
+                <option value="Duda sobre Ingredientes">Pregunta sobre Ingredientes / Tipo de Piel</option>
+                <option value="Pedido Especial / Mayoreo">Pedido Especial o Mayoreo</option>
+                <option value="Consulta General">Consulta General</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Subtono de Piel / Detalles</label>
+            <input type="text" name="tonoPiel" class="form-control" placeholder="Ej. Piel mixta, subtono cálido..." />
+        </div>
+
+        <div class="form-group">
+            <label>Mensaje</label>
+            <textarea name="mensaje" class="form-control" rows="4" placeholder="Escribe aquí tu consulta..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Enviar Consulta</button>
+    </form>
+</div>

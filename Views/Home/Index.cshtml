@@ -1,0 +1,109 @@
+﻿@model IEnumerable<dynamic>
+
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<style>
+    .hero-banner { 
+        background: radial-gradient(circle at center, #2d1b33 0%, #120e14 100%);
+        padding: 90px 20px; 
+        text-align: center;
+    }
+    .hero-banner h1 { 
+        font-family: 'Playfair Display', serif;
+        font-size: 3.5rem; 
+        font-weight: 800; 
+        background: linear-gradient(90deg, #f2a1b1, #e0a96d);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 15px;
+    }
+    .hero-banner p { color: #c5b8cc; font-size: 1.1rem; max-width: 600px; margin: 0 auto 30px; font-weight: 300; }
+    
+    .btn-action { 
+        background: #f2a1b1; 
+        color: #120e14; 
+        padding: 14px 35px; 
+        border-radius: 30px; 
+        text-decoration: none; 
+        display: inline-block; 
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+        box-shadow: 0 0 20px rgba(242, 161, 177, 0.3);
+        transition: 0.3s;
+    }
+    .btn-action:hover { background: #e0a96d; box-shadow: 0 0 25px rgba(224, 169, 109, 0.5); }
+
+    .badges-strip {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        padding: 25px 5%;
+        background: #1a131e;
+        border-top: 1px solid #2e2035;
+        border-bottom: 1px solid #2e2035;
+        flex-wrap: wrap;
+    }
+    .badge-item { color: #e0a96d; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+    .section-title { 
+        text-align: center; 
+        margin: 60px 0 20px; 
+        font-family: 'Playfair Display', serif; 
+        font-size: 2.2rem; 
+        color: #f2a1b1; 
+    }
+
+    .cards-wrapper { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; padding: 10px 5% 40px; }
+    .promo-card { background: #1c1421; border: 1px solid #33233b; border-radius: 16px; width: 300px; overflow: hidden; transition: 0.3s; }
+    .promo-card:hover { transform: translateY(-8px); border-color: #f2a1b1; box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
+    .promo-card img { width: 100%; height: 260px; object-fit: cover; }
+    .card-body { padding: 1.4rem; text-align: center; }
+    .tag { background: rgba(242, 161, 177, 0.15); color: #f2a1b1; font-size: 0.75rem; font-weight: 700; padding: 4px 12px; border-radius: 12px; text-transform: uppercase; }
+    .card-title { font-size: 1.1rem; margin: 12px 0 6px; color: #fff; font-weight: 600; }
+    .card-price { font-size: 1.3rem; font-weight: 700; color: #e0a96d; margin-top: 8px; }
+
+    .catalog-link-box { text-align: center; margin-bottom: 60px; }
+    .btn-secondary { background: transparent; border: 2px solid #e0a96d; color: #e0a96d; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; transition: 0.3s; }
+    .btn-secondary:hover { background: #e0a96d; color: #120e14; }
+</style>
+
+<div class="hero-banner">
+    <h1>RESALTA TU BELLEZA NATURAL</h1>
+    <p>Cosméticos de alta gama con ingredientes veganos, tonos vibrantes y fórmulas de larga duración.</p>
+    <a asp-controller="Home" asp-action="Contacto" class="btn-action">Solicitar Asesoría de Tono</a>
+</div>
+
+<div class="badges-strip">
+    <div class="badge-item">🐰 100% Cruelty Free</div>
+    <div class="badge-item">🌿 Fórmulas Veganas</div>
+    <div class="badge-item">✨ Alta Pigmentación</div>
+    <div class="badge-item">🚚 Envío Seguro</div>
+</div>
+
+<div id="ofertas">
+    <h2 class="section-title">✨ Ofertas & Sets Exclusivos</h2>
+    <div class="cards-wrapper">
+        @if (Model != null)
+        {
+            foreach (var p in Model)
+            {
+                <div class="promo-card">
+                    <img src="@p.Imagen" alt="@p.Nombre" />
+                    <div class="card-body">
+                        <span class="tag">@p.Categoria</span>
+                        <h3 class="card-title">@p.Nombre</h3>
+                        <div class="card-price">@p.Precio</div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+    <div class="catalog-link-box">
+        <a asp-controller="Productos" asp-action="Index" class="btn-secondary">Explorar Colección Completa →</a>
+    </div>
+</div>

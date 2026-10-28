@@ -1,0 +1,23 @@
+@model IEnumerable<maquillaje.Models.Producto>
+
+<style>
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; padding: 40px 5%; }
+    .card { background: white; border-radius: 12px; padding: 1rem; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .card img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; }
+    .cat { color: #A855F7; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
+    .precio { color: #6B21A8; font-weight: bold; font-size: 1.2rem; margin-top: 5px; }
+</style>
+
+<h2 style="text-align: center; color: #4C1D95; margin-top: 30px;">Nuestros Productos</h2>
+
+<div class="grid">
+    @foreach (var p in Model)
+    {
+        <div class="card">
+            <img src="@p.Imagen" alt="@p.Nombre" />
+            <div class="cat">@p.Categoria</div>
+            <h3>@p.Nombre</h3>
+            <div class="precio">@p.Precio</div>
+        </div>
+    }
+</div>

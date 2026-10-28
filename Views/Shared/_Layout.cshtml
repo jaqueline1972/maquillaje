@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BeautyJyC — Cosméticos & Maquillaje</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: #120e14; color: #f4edf5; min-height: 100vh; display: flex; flex-direction: column; }
+        
+        /* Top Banner */
+        .top-bar {
+            background: linear-gradient(90deg, #e0a96d, #f2a1b1, #e0a96d);
+            color: #120e14;
+            text-align: center;
+            padding: 7px 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        header {
+            background: rgba(22, 16, 26, 0.96);
+            backdrop-filter: blur(12px);
+            padding: 1.2rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #2e2035;
+            position: sticky; top: 0; z-index: 100;
+        }
+        .logo { 
+            color: #fff; 
+            font-family: 'Playfair Display', serif; 
+            font-size: 1.8rem; 
+            font-weight: 800; 
+            text-decoration: none; 
+            letter-spacing: 2px; 
+        }
+        .logo span { color: #f2a1b1; font-style: italic; }
+        
+        nav a { 
+            color: #c5b8cc; 
+            text-decoration: none; 
+            margin-left: 2rem; 
+            font-weight: 600; 
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        nav a:hover { color: #f2a1b1; text-shadow: 0 0 10px rgba(242, 161, 177, 0.5); }
+        
+        main { flex: 1; }
+        
+        /* Footer Elegante */
+        footer { 
+            background: #0b080d; 
+            color: #8c7b94; 
+            padding: 3.5rem 8% 1.5rem; 
+            border-top: 1px solid #231829;
+            margin-top: 4rem;
+        }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2.5rem; margin-bottom: 2rem; }
+        .footer-col h4 { 
+            color: #f2a1b1; 
+            font-family: 'Playfair Display', serif; 
+            font-size: 1.1rem; 
+            margin-bottom: 14px; 
+            letter-spacing: 1px; 
+        }
+        .footer-col p, .footer-col a { color: #a493ad; font-size: 0.85rem; text-decoration: none; display: block; margin-bottom: 8px; line-height: 1.6; }
+        .footer-col a:hover { color: #f2a1b1; }
+        .footer-bottom { text-align: center; font-size: 0.8rem; border-top: 1px solid #1a1220; padding-top: 1.5rem; color: #605068; }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        ✨ Cruelty-Free & Vegano | Envíos gratis en compras mayores a $500 MXN ✨
+    </div>
+
+    <header>
+        <a asp-controller="Home" asp-action="Index" class="logo">BEAUTY <span>JyC</span></a>
+        <nav>
+            <a asp-controller="Home" asp-action="Index">Inicio</a>
+            <a asp-controller="Home" asp-action="Index" asp-fragment="ofertas">Ofertas</a>
+            <a asp-controller="Productos" asp-action="Index">Catálogo</a>
+            <a asp-controller="Home" asp-action="Contacto">Asesórame / Contacto</a>
+            <a asp-controller="Home" asp-action="Faq">FAQ</a>
+        </nav>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>BEAUTY JyC</h4>
+                <p>Cosméticos de alta pigmentación, fórmulas respetuosas con tu piel y asesoría de belleza personalizada.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navegación</h4>
+                <a asp-controller="Home" asp-action="Index">Inicio</a>
+                <a asp-controller="Home" asp-action="Index" asp-fragment="ofertas">Ofertas Especiales</a>
+                <a asp-controller="Productos" asp-action="Index">Catálogo Completo</a>
+                <a asp-controller="Home" asp-action="Contacto">Atención Personalizada</a>
+                <a asp-controller="Home" asp-action="Faq">Preguntas Frecuentes</a>
+            </div>
+            <div class="footer-col">
+                <h4>Atención al Cliente</h4>
+                <p>📍 Tuxtla Gutierrez,Chiapas, México</p>
+                <p>✉️ hola@beautyjyc.com</p>
+                <p>📱 +52 (999) 987-6543</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 BEAUTY JyC — Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
